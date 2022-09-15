@@ -91,7 +91,7 @@
          */
         protected function validateLogin( Request $request ) {
             $request->validate( [
-                User::username()       => 'required|string|email|max:512',
+                User::username()       => 'required|string|max:512',
                 'password'             => 'required|string|min:8',
                 'g-recaptcha-response' => env( 'RECAPTCHAV3_ENABLE',
                     false ) ? 'required|recaptchav3:login,0.5' : 'nullable'
