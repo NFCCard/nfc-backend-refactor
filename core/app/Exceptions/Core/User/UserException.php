@@ -16,12 +16,6 @@
                 Response::HTTP_INTERNAL_SERVER_ERROR );
         }
 
-        public static function failedToBatchUpdate(): BaseException {
-            return self::make( 'Failed to batch update the user!',
-                UserErrorCode::failedToBatchUpdate(),
-                Response::HTTP_INTERNAL_SERVER_ERROR );
-        }
-
         public static function failedToDelete(): BaseException {
             return self::make( 'Failed to delete the user!', UserErrorCode::failedToDelete(),
                 Response::HTTP_INTERNAL_SERVER_ERROR );

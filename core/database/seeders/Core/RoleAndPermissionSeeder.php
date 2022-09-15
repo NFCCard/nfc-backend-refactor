@@ -2,6 +2,7 @@
 
     namespace Database\Seeders\Core;
 
+    use App\Models\Core\Profile;
     use App\Models\Core\User;
     use AreasEnum;
     use Hans\Horus\Models\Role;
@@ -28,11 +29,13 @@
 
 
             Horus::createSuperPermissions( [
-                User::class => '*',
+                User::class    => '*',
+                Profile::class => '*',
             ], AreasEnum::ADMIN );
 
             Horus::assignSuperPermissionsToRole( Role::findByName( RolesEnum::DEFAULT_ADMINS, AreasEnum::ADMIN ), [
                 User::class,
+                Profile::class,
             ] );
 
         }
