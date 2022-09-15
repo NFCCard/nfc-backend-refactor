@@ -2,8 +2,8 @@
 
     namespace App\Models\Core;
 
-    use App\Http\Resources\Core\User\UserCollection;
-    use App\Http\Resources\Core\User\UserResource;
+    use App\Http\Resources\V1\Core\User\UserCollection;
+    use App\Http\Resources\V1\Core\User\UserResource;
     use App\Mail\ResetPasswordEmail;
     use App\Models\Contracts\Filtering\Filterable;
     use App\Models\Contracts\Filtering\Loadable;
@@ -42,7 +42,6 @@
          * @var array<int, string>
          */
         protected $fillable = [
-            'name',
             'username',
             'password',
             'version',

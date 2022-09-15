@@ -9,6 +9,11 @@
     class UserPolicy {
         use HandlesAuthorization, PolicyHelper;
 
+
+        private function getModel(): string {
+            return User::class;
+        }
+
         /**
          * Determine whether the user can view any models.
          *

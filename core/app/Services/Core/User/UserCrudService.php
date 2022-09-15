@@ -5,6 +5,7 @@
     use App\Exceptions\Core\User\UserException;
     use App\Models\Core\User;
     use App\Repositories\Contracts\Core\IUserRepository;
+    use Illuminate\Contracts\Pagination\Paginator;
 
     class UserCrudService {
         private IUserRepository $repository;

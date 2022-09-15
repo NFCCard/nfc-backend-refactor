@@ -14,7 +14,6 @@
         public function up() {
             Schema::create( ( new User )->getTable(), function( Blueprint $table ) {
                 $table->id();
-                $table->string( 'name' );
                 $table->string( 'username' )->unique();
                 $table->string( 'password' );
                 $table->unsignedInteger( 'version' )->default( 1 );
