@@ -17,18 +17,17 @@
     use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
     use Illuminate\Contracts\Auth\MustVerifyEmail;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
+    use Illuminate\Database\Eloquent\Relations\HasOne;
     use Illuminate\Foundation\Auth\User as Authenticatable;
     use Illuminate\Http\Resources\Json\JsonResource;
     use Illuminate\Http\Resources\Json\ResourceCollection;
     use Illuminate\Notifications\Notifiable;
-    use Spatie\Activitylog\LogOptions;
-    use Spatie\Activitylog\Traits\LogsActivity;
 
     /**
- * @mixin IdeHelperUser
- */
+     * @mixin IdeHelperUser
+     */
     class User extends Authenticatable implements MustVerifyEmail, AuthenticatableContract, Filterable, Loadable, ResourceCollectionable {
-        use HasFactory, Notifiable, LogsActivity;
+        use HasFactory, Notifiable;
         use AliciaRelationHandler, HasRoles, HasRelations;
 
         use SphinxTrait, SphinxTrait {
@@ -36,6 +35,7 @@
         }
         use Paginatable;
 
+        protected $table = 'core_users';
         /**
          * The attributes that are mass assignable.
          *
@@ -43,10 +43,9 @@
          */
         protected $fillable = [
             'name',
-            'email',
+            'username',
             'password',
-            'tokens',
-            'version'
+            'version',
         ];
 
         /**
@@ -64,17 +63,21 @@
          * @var array<string, string>
          */
         protected $casts = [
-            'email_verified_at' => 'datetime',
-            'tokens'            => 'array',
-            'version'           => 'integer'
+            'version' => 'integer'
         ];
+
+        public function getForeignKey() {
+            return 'core_user_id';
+        }
+
 
         protected static function booted() {
             self::handleCaching();
+            self::created( fn( self $model ) => $model->profile()->create() );
         }
 
-        public function getActivitylogOptions(): LogOptions {
-            return LogOptions::defaults()->logFillable();
+        public function profile(): HasOne {
+            return $this->hasOne( Profile::class );
         }
 
         /**
@@ -108,19 +111,20 @@
 
         public function extract(): array {
             return [
-                'name' => $this->name,
+                'name'     => $this->name,
+                'username' => $this->username,
             ];
         }
 
         public static function username(): string {
-            return 'email';
+            return 'username';
         }
 
         public function getFilterableAttributes(): array {
             return [
                 'id',
                 'name',
-                'email',
+                'username',
             ];
         }
 
