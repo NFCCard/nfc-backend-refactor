@@ -10,6 +10,7 @@
     use App\Models\Contracts\Filtering\Loadable;
     use App\Models\Contracts\ResourceCollectionable;
     use App\Models\Traits\Paginatable;
+    use Hans\Alicia\Traits\AliciaRelationHandler;
     use Illuminate\Database\Eloquent\Casts\Attribute;
     use Illuminate\Database\Eloquent\Factories\HasFactory;
     use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -19,6 +20,7 @@
     class Profile extends BaseModel implements Filterable, Loadable, ResourceCollectionable {
         use HasFactory;
         use Paginatable;
+        use AliciaRelationHandler;
 
         protected $table = 'core_profiles';
         protected $fillable = [

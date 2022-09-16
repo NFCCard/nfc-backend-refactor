@@ -14,6 +14,7 @@
     Route::apiResource( 'profiles', ProfileCrudController::class )->except( [ 'store', 'destroy' ] );
     Route::prefix( 'profiles' )->group( function() {
         Route::belongsTo( 'user', ProfileRelationsController::class, [ 'except' => [ 'update' ] ] );
+        Route::belongsTo( 'resource', ProfileRelationsController::class );
     } );
 
     Route::post( 'upload/resource', [ ResourceController::class, 'store' ] )->middleware( 'auth' );

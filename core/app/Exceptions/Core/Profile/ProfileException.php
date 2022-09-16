@@ -17,4 +17,14 @@
                 ProfileErrorCode::doesntHaveUser(), Response::HTTP_NOT_FOUND );
         }
 
+        public static function doesntHaveResource(): BaseException {
+            return self::make( "The profile doesn't have any resource!",
+                ProfileErrorCode::doesntHaveResource(), Response::HTTP_NOT_FOUND );
+        }
+
+        public static function failedToUpdateResource(): BaseException {
+            return self::make( "Failed to update profile's resource!",
+                ProfileErrorCode::failedToUpdateResource(), Response::HTTP_INTERNAL_SERVER_ERROR );
+        }
+
     }
