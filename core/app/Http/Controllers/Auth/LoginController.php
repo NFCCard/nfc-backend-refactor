@@ -53,6 +53,15 @@
         }
 
         /**
+         * Get the login username to be used by the controller.
+         *
+         * @return string
+         */
+        public function username() {
+            return User::username();
+        }
+
+        /**
          * @return \Symfony\Component\HttpFoundation\RedirectResponse
          */
         public function google(): \Symfony\Component\HttpFoundation\RedirectResponse {
