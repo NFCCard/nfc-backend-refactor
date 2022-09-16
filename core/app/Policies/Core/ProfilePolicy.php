@@ -97,4 +97,14 @@
             return $user->can( $this->makeAbility() );
         }
 
+        /**
+         * @param User  $user
+         * @param Profile $model
+         *
+         * @return bool
+         */
+        public function viewUser( User $user,Profile $model ): bool {
+            return $user->can( $this->makeAbility() );
+        }
+
     }

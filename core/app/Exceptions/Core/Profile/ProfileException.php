@@ -12,4 +12,9 @@
                 Response::HTTP_INTERNAL_SERVER_ERROR );
         }
 
+        public static function doesntHaveUser(): BaseException {
+            return self::make( "The profile doesn't have any user!",
+                ProfileErrorCode::doesntHaveUser(), Response::HTTP_NOT_FOUND );
+        }
+
     }

@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers\V1\Core\User;
 
+    use App\Exceptions\BaseException;
     use App\Http\Controllers\Controller;
     use App\Http\Resources\V1\Core\Profile\ProfileResource;
     use App\Models\Core\User;
@@ -17,7 +18,7 @@
         /**
          * View Profile relation of given model
          *
-         * @throws \App\Exceptions\BaseException
+         * @throws BaseException
          */
         public function viewProfile( User $model ): ProfileResource {
             return ProfileResource::make( $this->service->viewProfile( $model ) );
