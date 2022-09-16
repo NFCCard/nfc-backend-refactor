@@ -7,6 +7,7 @@
     use App\Repositories\Contracts\Core\IUserRepository;
     use Illuminate\Contracts\Pagination\Paginator;
     use Illuminate\Support\Facades\DB;
+    use Illuminate\Support\Facades\Hash;
     use RolesEnum;
 
     class UserCrudService {
@@ -25,6 +26,9 @@
         }
 
         public function create( array $data ): User {
+            if ( isset( $data[ 'password' ] ) ) {
+                $data[ 'password' ] = Hash::make( $data[ 'password' ] );
+            }
             DB::beginTransaction();
             try {
                 throw_unless( $model = $this->repository->create( $data ), UserException::failedToCreate() );
@@ -39,6 +43,9 @@
         }
 
         public function update( User $model, array $data ): User {
+            if ( isset( $data[ 'password' ] ) ) {
+                $data[ 'password' ] = Hash::make( $data[ 'password' ] );
+            }
             if ( $this->repository->update( $model, $data ) ) {
                 return $model;
             }
