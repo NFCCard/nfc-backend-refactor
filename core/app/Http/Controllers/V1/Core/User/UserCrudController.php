@@ -10,6 +10,7 @@
     use App\Http\Resources\V1\Core\User\UserResource;
     use App\Models\Core\User;
     use App\Services\Core\User\UserCrudService;
+    use Throwable;
 
     class UserCrudController extends Controller {
         private UserCrudService $service;
@@ -33,7 +34,7 @@
          * @param UserStoreRequest $request
          *
          * @return UserResource
-         * @throws BaseException
+         * @throws Throwable
          */
         public function store( UserStoreRequest $request ): UserResource {
             return UserResource::make( $this->service->create( $request->validated() ) );

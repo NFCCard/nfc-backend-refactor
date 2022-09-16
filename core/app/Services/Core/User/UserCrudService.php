@@ -6,6 +6,8 @@
     use App\Models\Core\User;
     use App\Repositories\Contracts\Core\IUserRepository;
     use Illuminate\Contracts\Pagination\Paginator;
+    use Illuminate\Support\Facades\DB;
+    use RolesEnum;
 
     class UserCrudService {
         private IUserRepository $repository;
@@ -23,11 +25,17 @@
         }
 
         public function create( array $data ): User {
-            if ( $model = $this->repository->create( $data ) ) {
-                return $model;
+            DB::beginTransaction();
+            try {
+                throw_unless( $model = $this->repository->create( $data ), UserException::failedToCreate() );
+                $model->assignRole( $data[ 'role_id' ] ?? RolesEnum::DEFAULT_USERS, true );
+            } catch ( \Throwable $e ) {
+                DB::rollBack();
+                throw $e;
             }
+            DB::commit();
 
-            throw UserException::failedToCreate();
+            return $model;
         }
 
         public function update( User $model, array $data ): User {
