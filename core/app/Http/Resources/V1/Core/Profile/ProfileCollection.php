@@ -1,19 +1,36 @@
 <?php
 
-namespace App\Http\Resources\V1\Core\Profile;
+    namespace App\Http\Resources\V1\Core\Profile;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+    use App\Http\Resources\Traits\InteractsWithPivots;
+    use App\Http\Resources\Traits\InteractsWithRelations;
+    use Illuminate\Http\Request;
+    use Illuminate\Http\Resources\Json\ResourceCollection;
 
-class ProfileCollection extends ResourceCollection
-{
-    /**
-     * Transform the resource collection into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
-     */
-    public function toArray($request)
-    {
-        return parent::toArray($request);
+    class ProfileCollection extends ResourceCollection {
+        use InteractsWithRelations, InteractsWithPivots;
+
+        /**
+         * Transform the resource collection into an array.
+         *
+         * @param Request $request
+         *
+         * @return array
+         */
+        public function toArray( $request ) {
+            return parent::toArray( $request );
+        }
+
+        /**
+         * Get any additional data that should be returned with the resource array.
+         *
+         * @param Request $request
+         *
+         * @return array
+         */
+        public function with( $request ) {
+            return [
+                'type' => 'profiles',
+            ];
+        }
     }
-}
