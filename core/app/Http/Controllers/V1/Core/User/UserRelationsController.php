@@ -1,11 +1,25 @@
 <?php
 
-namespace App\Http\Controllers\V1\Core\User;
+    namespace App\Http\Controllers\V1\Core\User;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+    use App\Http\Controllers\Controller;
+    use App\Http\Resources\V1\Core\Profile\ProfileResource;
+    use App\Models\Core\User;
+    use App\Services\Core\User\UserRelationsService;
 
-class UserRelationsController extends Controller
-{
-    //
-}
+    class UserRelationsController extends Controller {
+        private UserRelationsService $service;
+
+        public function __construct() {
+            $this->service = app( UserRelationsService::class );
+        }
+
+        /**
+         * View Profile relation of given model
+         *
+         * @throws \App\Exceptions\BaseException
+         */
+        public function viewProfile( User $model ): ProfileResource {
+            return ProfileResource::make( $this->service->viewProfile( $model ) );
+        }
+    }

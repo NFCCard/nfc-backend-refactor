@@ -20,4 +20,10 @@
             return self::make( 'Failed to delete the user!', UserErrorCode::failedToDelete(),
                 Response::HTTP_INTERNAL_SERVER_ERROR );
         }
+
+        public static function doesntHaveProfile(): BaseException {
+            return self::make( "The user doesn't have any profile!",
+                UserErrorCode::doesntHaveProfile(), Response::HTTP_NOT_FOUND );
+        }
+
     }

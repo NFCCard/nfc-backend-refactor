@@ -10,4 +10,5 @@
         protected int $FAILED_TO_CREATE = 1;
         protected int $FAILED_TO_UPDATE = 2;
         protected int $FAILED_TO_DELETE = 3;
+        protected int $DOESNT_HAVE_PROFILE = 4;
     }
