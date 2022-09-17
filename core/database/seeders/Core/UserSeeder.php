@@ -13,12 +13,16 @@
          * @return void
          */
         public function run() {
-            $user = User::factory()->create();
+            $user = User::factory()->create( [
+                'username' => 'mammadkamalipour'
+            ] );
             $user->assignRole( RolesEnum::DEFAULT_ADMINS, true );
 
-            foreach ( range( 1, 5 ) as $item ) {
-                $user = User::factory()->create();
-                $user->assignRole( RolesEnum::DEFAULT_USERS, true );
+            if ( env( 'FAKE_DATA_FOR_DATABASE', false ) ) {
+                User::factory()
+                    ->count( rand( 10, 25 ) )
+                    ->create()
+                    ->each( fn( User $user ) => $user->assignRole( RolesEnum::DEFAULT_USERS, true ) );
             }
         }
     }

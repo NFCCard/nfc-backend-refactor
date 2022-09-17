@@ -17,7 +17,10 @@
     use Illuminate\Http\Resources\Json\JsonResource;
     use Illuminate\Http\Resources\Json\ResourceCollection;
 
-    class Profile extends BaseModel implements Filterable, Loadable, ResourceCollectionable {
+    /**
+ * @mixin IdeHelperProfile
+ */
+class Profile extends BaseModel implements Filterable, Loadable, ResourceCollectionable {
         use HasFactory;
         use Paginatable;
         use AliciaRelationHandler;

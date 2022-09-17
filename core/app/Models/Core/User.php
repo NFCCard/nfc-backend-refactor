@@ -25,8 +25,8 @@
     use Illuminate\Notifications\Notifiable;
 
     /**
-     * @mixin IdeHelperUser
-     */
+ * @mixin IdeHelperUser
+ */
     class User extends Authenticatable implements MustVerifyEmail, AuthenticatableContract, Filterable, Loadable, ResourceCollectionable {
         use HasFactory, Notifiable;
         use AliciaRelationHandler, HasRoles, HasRelations;
