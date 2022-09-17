@@ -4,9 +4,9 @@
 
     use App\Helpers\Traits\EnumHelper;
 
-    enum LanguagesEnum: string {
+    class LanguagesEnum {
         use EnumHelper;
 
-        case ENGLISH = 'en';
-        case FARSI = 'fa';
+        const ENGLISH = 'en';
+        const FARSI = 'fa';
     }

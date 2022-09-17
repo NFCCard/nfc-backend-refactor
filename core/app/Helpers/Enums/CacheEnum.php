@@ -4,8 +4,8 @@
 
     use App\Helpers\Traits\EnumHelper;
 
-    enum CacheEnum: string {
+    class CacheEnum {
         use EnumHelper;
 
-        case PREFIX = 'STARTER_PREFIX_';
+        const PREFIX = 'STARTER_PREFIX_';
     }

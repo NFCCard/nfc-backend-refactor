@@ -8,7 +8,7 @@
         public static function toArray(): array {
             $vars = collect();
             foreach ( ( new ReflectionClass( static::class ) )->getConstants() as $name => $value ):
-                $vars->put( $name, $value->value );
+                $vars->put( $name, $value );
             endforeach;
 
             return $vars->toArray();

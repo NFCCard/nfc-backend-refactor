@@ -34,11 +34,11 @@
                 'first_name'                                  => [
                     'array:' . implode( ',', LanguagesEnum::toArray() )
                 ],
-                'first_name.' . LanguagesEnum::ENGLISH->value => [
+                'first_name.' . LanguagesEnum::ENGLISH => [
                     'string',
                     'max:255'
                 ],
-                'first_name.' . LanguagesEnum::FARSI->value => [
+                'first_name.' . LanguagesEnum::FARSI => [
                     'string',
                     'max:255'
                 ],
@@ -46,11 +46,11 @@
                 'last_name'                                  => [
                     'array:' . implode( ',', LanguagesEnum::toArray() )
                 ],
-                'last_name.' . LanguagesEnum::ENGLISH->value => [
+                'last_name.' . LanguagesEnum::ENGLISH => [
                     'string',
                     'max:255'
                 ],
-                'last_name.' . LanguagesEnum::FARSI->value => [
+                'last_name.' . LanguagesEnum::FARSI => [
                     'string',
                     'max:255'
                 ],
@@ -58,10 +58,10 @@
                 'description'                                  => [
                     'array:' . implode( ',', LanguagesEnum::toArray() )
                 ],
-                'description.' . LanguagesEnum::ENGLISH->value => [
+                'description.' . LanguagesEnum::ENGLISH => [
                     'string',
                 ],
-                'description.' . LanguagesEnum::FARSI->value => [
+                'description.' . LanguagesEnum::FARSI => [
                     'string',
                 ],
             ];

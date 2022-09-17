@@ -4,10 +4,10 @@
 
     use App\Helpers\Traits\EnumHelper;
 
-    enum StatusEnum: string {
+    class StatusEnum {
         use EnumHelper;
 
-        case ACCEPTED = 'accepted';
-        case DENIED = 'denied';
-        case PENDING = 'pending';
+        const ACCEPTED = 'accepted';
+        const DENIED = 'denied';
+        const PENDING = 'pending';
     }

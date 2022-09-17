@@ -4,8 +4,8 @@
 
     use App\Helpers\Traits\EnumHelper;
 
-    enum BucketEnum: string {
+    class BucketEnum {
         use EnumHelper;
 
-        case DEFAULT = 'prefix-storage';
+        const DEFAULT = 'prefix-storage';
     }

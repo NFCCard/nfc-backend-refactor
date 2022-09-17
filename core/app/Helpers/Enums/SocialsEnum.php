@@ -4,21 +4,21 @@
 
     use App\Helpers\Traits\EnumHelper;
 
-    enum SocialsEnum: string {
+    class SocialsEnum {
         use EnumHelper;
 
-        case GITHUB = 'github';
-        case INSTAGRAM = 'instagram';
-        case TELEGRAM = 'telegram';
-        case WHATSAPP = 'whatsapp';
-        case Dribble = 'dribble';
-        case LINKEDIN = 'linkedin';
-        case PINTEREST = 'pinterest';
-        case TWITTER = 'twitter';
-        case YOUTUBE = 'youtube';
-        case APARAT = 'apart';
-        case TIKTAK = 'tiktak';
-        case SPOTIFY = 'spotify';
-        case SOUNDCLOUD = 'soundcloud';
-        case TWITCH = 'twitch';
+        const GITHUB = 'github';
+        const INSTAGRAM = 'instagram';
+        const TELEGRAM = 'telegram';
+        const WHATSAPP = 'whatsapp';
+        const Dribble = 'dribble';
+        const LINKEDIN = 'linkedin';
+        const PINTEREST = 'pinterest';
+        const TWITTER = 'twitter';
+        const YOUTUBE = 'youtube';
+        const APARAT = 'apart';
+        const TIKTAK = 'tiktak';
+        const SPOTIFY = 'spotify';
+        const SOUNDCLOUD = 'soundcloud';
+        const TWITCH = 'twitch';
     }
