@@ -1,13 +1,13 @@
 <?php
 
-    namespace App\Http\Resources\Core\User;
+    namespace App\Http\Resources\V1\Core\Profile;
 
     use App\Http\Resources\Traits\InteractsWithPivots;
     use App\Http\Resources\Traits\InteractsWithRelations;
     use Illuminate\Http\Request;
     use Illuminate\Http\Resources\Json\ResourceCollection;
 
-    class UserCollection extends ResourceCollection {
+    class ProfileCollection extends ResourceCollection {
         use InteractsWithRelations, InteractsWithPivots;
 
         /**
@@ -21,10 +21,16 @@
             return parent::toArray( $request );
         }
 
+        /**
+         * Get any additional data that should be returned with the resource array.
+         *
+         * @param Request $request
+         *
+         * @return array
+         */
         public function with( $request ) {
             return [
-                'type' => 'users'
+                'type' => 'profiles',
             ];
         }
-
     }

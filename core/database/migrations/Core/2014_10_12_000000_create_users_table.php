@@ -1,5 +1,6 @@
 <?php
 
+    use App\Models\Core\User;
     use Illuminate\Database\Migrations\Migration;
     use Illuminate\Database\Schema\Blueprint;
     use Illuminate\Support\Facades\Schema;
@@ -11,11 +12,9 @@
          * @return void
          */
         public function up() {
-            Schema::create( 'users', function( Blueprint $table ) {
+            Schema::create( ( new User )->getTable(), function( Blueprint $table ) {
                 $table->id();
-                $table->string( 'name' );
-                $table->string( 'email' )->unique();
-                $table->timestamp( 'email_verified_at' )->nullable();
+                $table->string( 'username' )->unique();
                 $table->string( 'password' );
                 $table->unsignedInteger( 'version' )->default( 1 );
                 $table->timestamps();
@@ -28,6 +27,6 @@
          * @return void
          */
         public function down() {
-            Schema::dropIfExists( 'users' );
+            Schema::dropIfExists( ( new User )->getTable() );
         }
     };

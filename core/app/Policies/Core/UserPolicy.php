@@ -9,6 +9,11 @@
     class UserPolicy {
         use HandlesAuthorization, PolicyHelper;
 
+
+        private function getModel(): string {
+            return User::class;
+        }
+
         /**
          * Determine whether the user can view any models.
          *
@@ -52,7 +57,7 @@
          * @return mixed
          */
         public function update( User $user, User $model ): bool {
-            return $user->can( $this->makeAbility() );
+            return $user->can( $this->makeAbility() ) or $user->is( $model );
         }
 
         /**
@@ -88,6 +93,16 @@
          * @return mixed
          */
         public function forceDelete( User $user, User $model ): bool {
+            return $user->can( $this->makeAbility() );
+        }
+
+        /**
+         * @param User $user
+         * @param User $model
+         *
+         * @return bool
+         */
+        public function viewProfile( User $user, User $model ): bool {
             return $user->can( $this->makeAbility() );
         }
 

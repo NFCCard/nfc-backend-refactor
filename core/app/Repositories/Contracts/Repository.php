@@ -2,9 +2,14 @@
 
     namespace App\Repositories\Contracts;
 
+    use App\Services\Core\Resource\ResourceService;
+    use Exception;
+    use Hans\Alicia\Models\Resource;
     use Illuminate\Contracts\Database\Eloquent\Builder;
     use Illuminate\Database\Eloquent\Model;
+    use Illuminate\Support\Facades\DB;
     use Illuminate\Support\Facades\Gate;
+    use Throwable;
 
     abstract class Repository {
         abstract protected function getQueryBuilder(): Builder;
@@ -52,5 +57,36 @@
 
         protected function resolveModel( Model|int $model ): Model {
             return $model instanceof Model ? $model : $this->getQueryBuilder()->findOrFail( $model );
+        }
+
+        public function viewResource( Model $model ): Resource|null {
+            Gate::authorize( $this->policy( 'view' ), $model );
+
+            return $model->uploads()->limit( 1 )->first();
+        }
+
+        public function updateResource( Model $model, Resource|int $related ): bool {
+            $related = is_int( $related ) ? Resource::findOrFail( $related ) : $related;
+            Gate::authorize( $this->policy( 'update' ), $model );
+
+            $resource = $this->viewResource( $model );
+            DB::beginTransaction();
+            try {
+                if ( $resource ) {
+                    if ( $resource->is( $related ) ) {
+                        throw new Exception;
+                    }
+                    $model->uploads()->detach( $resource->id );
+                    app( ResourceService::class )->delete( $resource->id );
+                }
+                $model->uploads()->sync( [ $related->id ] );
+            } catch ( Throwable $e ) {
+                DB::rollBack();
+
+                return false;
+            }
+            DB::commit();
+
+            return true;
         }
     }

@@ -4,15 +4,17 @@
     namespace App\Policies\Traits;
 
 
-    use Illuminate\Support\Arr;
+    use Horus;
 
     trait PolicyHelper {
         private function makeAbility(): string {
-            return $this->getModel() . '-' . debug_backtrace()[ 1 ][ 'function' ];
+            return Horus::normalizeModelName( $this->getModel() ) . '-' . debug_backtrace()[ 1 ][ 'function' ];
         }
 
-        private function getModel(): string {
-            return strtolower( substr( $string = Arr::last( explode( '\\', self::class ) ), 0,
-                strpos( $string, 'Policy' ) ) );
-        }
+        /**
+         * Set the related model class
+         *
+         * @return string
+         */
+        abstract private function getModel(): string;
     }

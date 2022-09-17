@@ -2,10 +2,11 @@
 
     namespace App\Providers;
 
+    use App\Models\Core\Profile;
     use App\Models\Core\User;
+    use App\Policies\Core\ProfilePolicy;
     use App\Policies\Core\UserPolicy;
     use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-    use Illuminate\Support\Facades\Gate;
 
     class AuthServiceProvider extends ServiceProvider {
         /**
@@ -14,7 +15,9 @@
          * @var array<class-string, class-string>
          */
         protected $policies = [
-            User::class => UserPolicy::class,
+            // Core
+            User::class    => UserPolicy::class,
+            Profile::class => ProfilePolicy::class,
         ];
 
         /**

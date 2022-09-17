@@ -1,6 +1,6 @@
 <?php
 
-    namespace App\Http\Resources\Core\Resource;
+    namespace App\Http\Resources\V1\Core\Resource;
 
     use App\Exceptions\BaseException;
     use App\Services\Uploading\UploadingService;
