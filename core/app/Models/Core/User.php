@@ -2,6 +2,7 @@
 
     namespace App\Models\Core;
 
+    use App\Http\Resources\V1\Core\Profile\ProfileResource;
     use App\Http\Resources\V1\Core\User\UserCollection;
     use App\Http\Resources\V1\Core\User\UserResource;
     use App\Mail\ResetPasswordEmail;
@@ -128,7 +129,9 @@
         }
 
         public function getLoadableRelations(): array {
-            return [];
+            return [
+                'profile' => ProfileResource::class,
+            ];
         }
 
         public static function getResource(): JsonResource {
