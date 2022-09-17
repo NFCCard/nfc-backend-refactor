@@ -21,8 +21,8 @@
             return $this->repository->all()->applyFilters()->paginate();
         }
 
-        public function find( int $model ): User {
-            return $this->repository->find( $model );
+        public function find( string $model ): User {
+            return $this->repository->all()->applyFilters()->whereUsername( $model )->firstOrFail() ;
         }
 
         public function create( array $data ): User {

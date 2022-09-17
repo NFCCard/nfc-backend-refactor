@@ -70,7 +70,6 @@
             return 'core_user_id';
         }
 
-
         protected static function booted() {
             self::handleCaching();
             self::created( fn( self $model ) => $model->profile()->create() );
@@ -111,6 +110,7 @@
 
         public function extract(): array {
             return [
+                'id' => $this->id,
                 'username' => $this->username,
             ];
         }

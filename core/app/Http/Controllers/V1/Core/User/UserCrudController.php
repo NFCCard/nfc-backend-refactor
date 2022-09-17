@@ -43,11 +43,11 @@
         /**
          * Display the specified resource.
          *
-         * @param int $user
+         * @param string $user
          *
          * @return UserResource
          */
-        public function show( int $user ): UserResource {
+        public function show( string $user ): UserResource {
             return UserResource::make( $this->service->find( $user ) );
         }
 
