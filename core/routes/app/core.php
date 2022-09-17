@@ -10,7 +10,7 @@
     Route::apiResource( 'users', UserCrudController::class );
     Route::prefix( 'users' )->group( function() {
         Route::hasOne( 'profile', UserRelationsController::class, [ 'except' => [ 'update' ] ] );
-        Route::prefix( '-actions' )->middleware( 'auth' )->group( function() {
+        Route::prefix( '-actions' )->group( function() {
             Route::post( '/{user}/create-vcf-file', [ UserActionsController::class, 'createVcfFile' ] );
         } );
     } );
