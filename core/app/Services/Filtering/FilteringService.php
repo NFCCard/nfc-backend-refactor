@@ -2,8 +2,6 @@
 
     namespace App\Services\Filtering;
 
-    use App\Services\Filtering\Filters\ApplyCategoriesFilter;
-    use App\Services\Filtering\Filters\ApplyValuesFilter;
     use App\Services\Filtering\Filters\IncludeFilter;
     use App\Services\Filtering\Filters\LikeFilter;
     use App\Services\Filtering\Filters\OrderFilter;
@@ -18,8 +16,6 @@
 
     class FilteringService {
         private array $registered = [
-            'apply_values_filter'           => ApplyValuesFilter::class,
-            'apply_categories_filter'       => ApplyCategoriesFilter::class,
             'include_filter'                => IncludeFilter::class,
             'like_filter'                   => LikeFilter::class,
             'order_filter'                  => OrderFilter::class,
