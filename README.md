@@ -1,4 +1,8 @@
-# Laravel Starter
+# Nfc card
+
+Special thanks to G-EAZY for motivating me to create this app;
+
+![G-EAZY](assets/g.jpg)
 
 ## Content table
 
