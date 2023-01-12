@@ -29,13 +29,13 @@
         /**
          * Determine whether the user can view the model.
          *
-         * @param User    $user
-         * @param Profile $profile
+         * @param User|null $user
+         * @param Profile   $profile
          *
          * @return mixed
          */
-        public function view( User $user, Profile $profile ): bool {
-            return $user->can( $this->makeAbility() );
+        public function view( ?User $user, Profile $profile ): bool {
+            return true;
         }
 
         /**

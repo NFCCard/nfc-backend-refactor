@@ -21,4 +21,5 @@
         const SPOTIFY = 'spotify';
         const SOUNDCLOUD = 'soundcloud';
         const TWITCH = 'twitch';
+        const WEBSITE = 'website';
     }

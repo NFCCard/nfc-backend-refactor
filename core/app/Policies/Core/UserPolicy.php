@@ -17,24 +17,24 @@
         /**
          * Determine whether the user can view any models.
          *
-         * @param User $user
+         * @param User|null $user
          *
          * @return mixed
          */
-        public function viewAny( User $user ): bool {
-            return $user->can( $this->makeAbility() );
+        public function viewAny( ?User $user ): bool {
+            return true;
         }
 
         /**
          * Determine whether the user can view the model.
          *
-         * @param User $user
-         * @param User $model
+         * @param User|null $user
+         * @param User      $model
          *
          * @return mixed
          */
-        public function view( User $user, User $model ): bool {
-            return $user->can( $this->makeAbility() );
+        public function view( ?User $user, User $model ): bool {
+            return true;
         }
 
         /**
