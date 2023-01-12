@@ -1,4 +1,0 @@
-GET http://localhost:8080/api/core/users/mammadkamalipour?include_filter=profile
-Accept: application/json
-
-###
