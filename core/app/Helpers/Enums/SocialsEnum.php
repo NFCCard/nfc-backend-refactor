@@ -11,13 +11,13 @@
         const INSTAGRAM = 'instagram';
         const TELEGRAM = 'telegram';
         const WHATSAPP = 'whatsapp';
-        const Dribble = 'dribble';
+        const Dribbble = 'dribbble';
         const LINKEDIN = 'linkedin';
         const PINTEREST = 'pinterest';
         const TWITTER = 'twitter';
         const YOUTUBE = 'youtube';
-        const APARAT = 'apart';
-        const TIKTAK = 'tiktak';
+        const APARAT = 'aparat';
+        const TIKTOK = 'tiktok';
         const SPOTIFY = 'spotify';
         const SOUNDCLOUD = 'soundcloud';
         const TWITCH = 'twitch';
